@@ -1,0 +1,15 @@
+.login-card {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(247, 247, 247);
+}
+
+form {
+    padding: 50px;
+    width: 500px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}

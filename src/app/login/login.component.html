@@ -1,0 +1,19 @@
+<div class="login-card">
+    <form [formGroup]="loginForm"> 
+        <h1 style="text-align: center;">Fazer login</h1>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" placeholder="Digite seu email" formControlName="email" id="email">
+        </div>
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" min="0" class="form-control" placeholder="Digite uma senha" formControlName="senha"
+            id="senha">
+        </div>
+        <div class="mb-3">
+            <button type="submit"
+            (click)="onLogin()"
+            class="btn btn-primary">Fazer Login</button>
+          </div>
+    </form>
+</div>
