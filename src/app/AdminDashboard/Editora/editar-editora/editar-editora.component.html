@@ -18,9 +18,12 @@
     id="uriFoto" 
     placeholder="Digite o link da nova imagem">
     </div>
+    <div class="alert alert-danger" role="alert" *ngIf="editForm.get('uriFoto')?.value.length < 3 && !editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched">
+      <span>O link deve ter entre 3 e 255 caracteres</span>
+    </div>
     <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched">
         <span>O link da imagem deve ser uma url</span>
-      </div>
+    </div>
     <div>
       <button
       type="submit"

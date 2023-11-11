@@ -15,6 +15,7 @@ import { EditarCategoriaComponent } from './AdminDashboard/Categoria/editar-cate
 import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adicionar-categoria/adicionar-categoria.component';
 import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
 import { EditarEditoraComponent } from './AdminDashboard/Editora/editar-editora/editar-editora.component';
+import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-editora/adicionar-editora.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditarEditoraComponent } from './AdminDashboard/Editora/editar-editora/
     EditarCategoriaComponent,
     AdicionarCategoriaComponent,
     ListarEditoraComponent,
-    EditarEditoraComponent
+    EditarEditoraComponent,
+    AdicionarEditoraComponent
   ],
   imports: [
     BrowserModule,

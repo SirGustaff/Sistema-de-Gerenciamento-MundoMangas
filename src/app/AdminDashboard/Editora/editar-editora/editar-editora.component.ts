@@ -24,7 +24,7 @@ export class EditarEditoraComponent {
   ) {}
 
   ngOnInit() {
-    const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+    const reg = /^(?:(http(s)?)?(sftp)?(ftp)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
     this.editForm = this.formBuilder.group({
       id: [this.editora.id],
       nome: [this.editora.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(60),]],

@@ -6,6 +6,7 @@ import { authGuard } from './guards/auth.guard';
 import { ListarCategoriaComponent } from './AdminDashboard/Categoria/listar-categoria/listar-categoria.component';
 import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adicionar-categoria/adicionar-categoria.component';
 import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
+import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-editora/adicionar-editora.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'listar-editoras',
         component: ListarEditoraComponent
+      },
+      {
+        path: 'adicionar-editora',
+        component: AdicionarEditoraComponent
       },
     ]
   }

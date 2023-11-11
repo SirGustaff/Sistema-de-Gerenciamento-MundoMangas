@@ -30,6 +30,7 @@ export class ListarEditoraComponent {
   ) { }
 
   ngOnInit() {
+    
     this.publisherPage$ = this.getPublisher();
   }
 
