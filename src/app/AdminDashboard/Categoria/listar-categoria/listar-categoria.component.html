@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header">
+      <div class="float-left">
+        <h4>Categorias</h4>
+      </div>
+      <div class="float-start">
+        <span>Itens encontrados: {{ (categoryPage$ | async)?.totalItems }}</span>
+        <form [formGroup]="params">
+          <span>Filtrar por ordem:</span>
+          <select formControlName="order" style="margin-left: 10px;" (change)="selectOrder()">
+            <option value="">ID</option>
+            <option value="OrderByNameASC">A - Z</option>
+            <option value="OrderByNameDESC">Z - A</option>
+          </select>
+        </form>
+        <div class="search-wrapper">
+          <div class="md-form active-cyan active-cyan-2 mb-3" [formGroup]="params">
+            <input class="form-control" id="search" type="text" name="nome" formControlName="nome"
+              placeholder="Pesquisa pela categoria" aria-label="Search">
+          </div>
+          <button class="btn btn-outline-secondary" type="submit" (click)="onSearch()">Pesquisar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Categoria</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of (categoryPage$ | async)?.items">
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nome }}</td>
+            <td>
+              <span class="float-end">
+                <button class="btn btn-outline-warning mb-1 btn-sm">
+                  Atualizar
+                </button>
+                {{ ' ' }}
+                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(categoria.id)">
+                  Remover
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="display: flex; justify-content: center;" *ngIf="(categoryPage$ | async)!.totalItems > 20">
+        <form [formGroup]="params">
+          <select formControlName="page" (change)="onChangePage()">
+            <option *ngFor="let page of [].constructor((categoryPage$ | async)?.totalPages); let i = index" [value]="i+1">
+              Página: {{ i+1 }}</option>
+          </select>
+        </form>
+      </div>
+    </div>
+  </div>

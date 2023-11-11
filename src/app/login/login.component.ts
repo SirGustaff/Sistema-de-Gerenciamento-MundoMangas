@@ -25,14 +25,18 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.userAuthService.isLoggedIn()) {
+      this.router.navigate(['home']);
+    }
+  }
 
   onLogin() {
     this.userService.login(this.loginForm.value).subscribe({
       next: (data: any) => {
         console.log(data.token);
         this.userAuthService.setToken(data.token);
-        this.router.navigate(['']);
+        this.router.navigate(['/home'], { replaceUrl: true });
       },
       error: (error: any) => {
         console.log(error.details);
