@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../../services/categoria.service';
 import { Categorias, CategoryPage } from '../../../Interfaces/categorias';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -13,8 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ListarCategoriaComponent implements OnInit {
 
-  categoryPage$: Observable<CategoryPage>;
-
+  categoryPage$: Observable<CategoryPage>
+  
   params: FormGroup = this.formBuilder.group({
     order: new FormControl(''),
     page: new FormControl(1),
@@ -25,9 +25,7 @@ export class ListarCategoriaComponent implements OnInit {
     private dialog: MatDialog,
     private service: CategoriaService,
     private formBuilder: FormBuilder,
-  ) { 
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.categoryPage$ = this.getCategory();

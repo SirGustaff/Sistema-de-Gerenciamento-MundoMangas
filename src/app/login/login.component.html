@@ -13,6 +13,7 @@
         <div class="mb-3">
             <button type="submit"
             (click)="onLogin()"
+            [disabled]="!loginForm.valid"
             class="btn btn-primary">Fazer Login</button>
           </div>
     </form>

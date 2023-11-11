@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private userAuthService: UserAuthService,
     private router: Router,
+    private toastr: ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
       email: [, [Validators.required, Validators.email]],
@@ -36,10 +38,19 @@ export class LoginComponent implements OnInit {
       next: (data: any) => {
         console.log(data.token);
         this.userAuthService.setToken(data.token);
+        this.toastr.success('O login foi realizado com sucesso', '', {
+          progressBar: true,
+          progressAnimation: 'decreasing',
+          timeOut: 2000,
+        });
         this.router.navigate(['/home'], { replaceUrl: true });
       },
       error: (error: any) => {
-        console.log(error.details);
+        this.toastr.error('Suas credenciais podem estar erradas', 'Impossível fazer o login', {
+          progressBar: true,
+          progressAnimation: 'decreasing',
+          timeOut: 2000,
+        });
       }
     });
   }
