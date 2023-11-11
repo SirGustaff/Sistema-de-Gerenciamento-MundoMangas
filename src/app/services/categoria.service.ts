@@ -1,11 +1,13 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Categorias, CategoryPage } from '../Interfaces/categorias';
+import { UserAuthService } from './user-auth.service';
 import { take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoriaService {
 
   private readonly urlGet = 'http://localhost:8080/categorias/por-nome';
@@ -14,8 +16,11 @@ export class CategoriaService {
 
   private readonly urlPutDelete = 'http://localhost:8080/categorias/';
 
+  headers = new HttpHeaders().set('authorization', `Bearer ${this.authService.getToken()}`)
+
   constructor(
     private http: HttpClient,
+    private authService: UserAuthService
   ) {}
 
   get(nome: string, page: number, order: string) {
@@ -33,14 +38,15 @@ export class CategoriaService {
   }
 
   post(categoria: Categorias) {
-    return this.http.post(this.urlPost, categoria).pipe(take(1));
+    return this.http.post(this.urlPost, categoria, {'headers': this.headers}).pipe(take(1));
   }
 
   put(categoria: Categorias){
-    return this.http.put(`${this.urlPutDelete}${categoria.id}`, categoria).pipe(take(1));
+    return this.http.put(`${this.urlPutDelete}${categoria.id}`, categoria, {'headers': this.headers}).pipe(take(1));
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.urlPutDelete}${id}`).pipe(take(1));
+    console.log(this.headers);
+    return this.http.delete(`${this.urlPutDelete}${id}`, {'headers': this.headers}).pipe(take(1));
   }
 }

@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './AdminDashboard/home/home.component';
 import { authGuard } from './guards/auth.guard'; 
 import { ListarCategoriaComponent } from './AdminDashboard/Categoria/listar-categoria/listar-categoria.component';
+import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adicionar-categoria/adicionar-categoria.component';
+import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
 
 const routes: Routes = [
   {
@@ -19,7 +21,14 @@ const routes: Routes = [
         path: 'listar-categorias',
         component: ListarCategoriaComponent
       },
-
+      {
+        path: 'adicionar-categoria',
+        component: AdicionarCategoriaComponent
+      },
+      {
+        path: 'listar-editoras',
+        component: ListarEditoraComponent
+      },
     ]
   }
 ];

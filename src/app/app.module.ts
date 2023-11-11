@@ -11,13 +11,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './guards/auth.interceptor';
+import { EditarCategoriaComponent } from './AdminDashboard/Categoria/editar-categoria/editar-categoria.component';
+import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adicionar-categoria/adicionar-categoria.component';
+import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
+import { EditarEditoraComponent } from './AdminDashboard/Editora/editar-editora/editar-editora.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ListarCategoriaComponent
+    ListarCategoriaComponent,
+    EditarCategoriaComponent,
+    AdicionarCategoriaComponent,
+    ListarEditoraComponent,
+    EditarEditoraComponent
   ],
   imports: [
     BrowserModule,

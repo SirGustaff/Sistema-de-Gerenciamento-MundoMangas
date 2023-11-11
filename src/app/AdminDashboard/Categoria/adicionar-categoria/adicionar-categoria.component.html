@@ -1,0 +1,25 @@
+<form class="needs-validation" [formGroup]="categoryForm">
+    <h1>Criar nova categoria</h1>
+    <div class="form-group">
+      <label class="control-label" for="nome">Nome:</label>
+      <input 
+      type="email" 
+      class="form-control" 
+      formControlName="nome"
+      id="nome" 
+      placeholder="Nome da Categoria">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="!categoryForm.get('nome')?.valid && categoryForm.get('nome')?.touched">
+      <span>O nome deve ter entre 3 e 60 caracteres</span>
+    </div>
+    <div>
+        <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!categoryForm.valid"
+        (click)="onSubmit()"
+        style="margin-top: 20px;">Adicionar Categoria</button>
+    </div>
+  </form>
+  
+  

@@ -1,10 +1,10 @@
 <div class="card">
     <div class="card-header">
       <div class="float-left">
-        <h4>Categorias</h4>
+        <h4>Editoras</h4>
       </div>
       <div class="float-start">
-        <span>Itens encontrados: {{ (categoryPage$ | async )?.totalItems }}</span>
+        <span>Itens encontrados: {{ (publisherPage$ | async)?.totalItems }}</span>
         <form [formGroup]="params">
           <span>Filtrar por ordem:</span>
           <select formControlName="order" style="margin-left: 10px;" (change)="selectOrder()">
@@ -28,20 +28,22 @@
           <tr>
             <th>#</th>
             <th>Categoria</th>
+            <th>Uri-Foto</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let categoria of (categoryPage$ | async)?.items">
-            <td>{{ categoria.id }}</td>
-            <td>{{ categoria.nome }}</td>
+          <tr *ngFor="let editora of (publisherPage$ | async)?.items">
+            <td>{{ editora.id }}</td>
+            <td>{{ editora.nome }}</td>
+            <td style="font-size: 12px;"><a href="{{ editora.uriFoto }}">{{ editora.uriFoto | slice:0:20}}</a></td>
             <td>
               <span class="float-end">
-                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(categoria)">
+                <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(editora)">
                   Atualizar
                 </button>
                 {{ ' ' }}
-                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(categoria.id)">
+                <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(editora.id)">
                   Remover
                 </button>
               </span>
@@ -52,8 +54,8 @@
       <div style="display: flex; justify-content: center;">
         <form [formGroup]="params">
           <select formControlName="page" (change)="onChangePage()">
-            <option *ngFor="let page of [].constructor((categoryPage$ | async)?.totalPages); let i = index" [value]="i+1">
-              Página: {{ i+1 }}</option>
+            <option *ngFor="let page of [].constructor((publisherPage$ | async)?.totalPages); let i = index"
+              [value]="i+1">Página: {{ i+1 }}</option>
           </select>
         </form>
       </div>

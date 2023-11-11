@@ -1,4 +1,5 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { UserAuthService } from './user-auth.service';
 import { Injectable } from '@angular/core';
 import { Editoras, PublisherPage } from '../Interfaces/editoras';
 import { take, tap } from 'rxjs/operators';
@@ -14,8 +15,11 @@ export class EditoraService {
 
   private readonly urlPutDelete = 'http://localhost:8080/editoras/';
 
+  headers = new HttpHeaders().set('authorization', `Bearer ${this.authService.getToken()}`)
+
   constructor(
     private http: HttpClient,
+    private authService: UserAuthService
   ) {}
 
   get(nome: string, page: number, order: string) {
@@ -33,14 +37,14 @@ export class EditoraService {
   }
 
   post(editora: Editoras) {
-    return this.http.post(this.urlPost, editora).pipe(take(1));
+    return this.http.post(this.urlPost, editora, {'headers': this.headers}).pipe(take(1));
   }
 
   put(editora: Editoras){
-    return this.http.put(`${this.urlPutDelete}${editora.id}`, editora).pipe(take(1));
+    return this.http.put(`${this.urlPutDelete}${editora.id}`, editora, {'headers': this.headers}).pipe(take(1));
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.urlPutDelete}${id}`).pipe(take(1));
+    return this.http.delete(`${this.urlPutDelete}${id}`, {'headers': this.headers}).pipe(take(1));
   }
 }

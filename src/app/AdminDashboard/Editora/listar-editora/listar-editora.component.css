@@ -1,0 +1,38 @@
+/* Configurações gerais da tabela */
+
+.card {
+    margin: 20px 0px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input {
+    margin-left: 10px;
+}
+
+label {
+    margin-left: 5px;
+}
+
+/* Configurações dos voltar e próxima */
+
+.trocar-pagina {
+    display: flex;
+}
+
+.trocar-pagina #proximo {
+    margin-left: auto;
+}
+
+/* Configurações da barra de pesquisa */
+
+input#search.form-control {
+    margin-top: 15px;
+    margin-left: 0px;
+}
+
+search-wrapper {
+    display: flex;
+}

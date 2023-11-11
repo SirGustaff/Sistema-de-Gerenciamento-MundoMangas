@@ -1,0 +1,35 @@
+<h1>Editar Editora - Id: {{ editora.id }}</h1>
+<div class="form-group" [formGroup]="editForm">
+    <label class="control-label" for="nome">Alterar nome:</label>
+    <input 
+    type="text" 
+    class="form-control" 
+    formControlName="nome"
+    id="nome" 
+    placeholder="Digite o novo nome">
+    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('nome')?.valid && editForm.get('nome')?.touched">
+      <span>O nome deve ter entre 3 e 60 caracteres</span>
+    </div>
+    <label class="control-label" for="uriFoto">Alterar Imagem:</label>
+    <input 
+    type="url" 
+    class="form-control" 
+    formControlName="uriFoto"
+    id="uriFoto" 
+    placeholder="Digite o link da nova imagem">
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched">
+        <span>O link da imagem deve ser uma url</span>
+      </div>
+    <div>
+      <button
+      type="submit"
+      [disabled]="!editForm.valid"
+      (click)="updatePublisher()"
+      class="btn btn-primary"
+      style="margin-top: 20px;">Atualizar Editora
+      </button>
+</div>
+
+
+  
