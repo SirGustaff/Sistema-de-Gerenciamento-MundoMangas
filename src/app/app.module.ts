@@ -19,6 +19,10 @@ import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-ed
 import { ListarProdutosComponent } from './AdminDashboard/Produtos/listar-produtos/listar-produtos.component';
 import { EditarProdutoComponent } from './AdminDashboard/Produtos/editar-produto/editar-produto.component';
 import { AdicionarProdutoComponent } from './AdminDashboard/Produtos/adicionar-produto/adicionar-produto.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { PaginatorModule } from 'primeng/paginator';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,10 @@ import { AdicionarProdutoComponent } from './AdminDashboard/Produtos/adicionar-p
     BrowserAnimationsModule,
     MatDialogModule,
     ToastrModule.forRoot(),
+    DropdownModule,
+    MultiSelectModule,
+    PaginatorModule,
+    DynamicDialogModule,
   ],
   providers: [
     

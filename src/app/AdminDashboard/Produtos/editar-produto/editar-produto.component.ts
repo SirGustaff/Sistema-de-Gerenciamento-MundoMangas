@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Editoras, PublisherPage } from '../../../Interfaces/editoras';
 import { EditoraService } from '../../../services/editora.service';
 import { ProdutoService } from '../../../services/produto.service';
@@ -54,8 +54,8 @@ export class EditarProdutoComponent {
       totalVendido: [this.produto.totalVendido],
       ativo: [this.produto.ativo,],
       colorido: [this.produto.colorido,],
-      editora: [null],
-      categorias: [this.produto.categorias,]
+      editora: [],
+      categorias: [],
     });
     
     this.editoraService.get('', 1, 'OrderByNameASC').pipe(

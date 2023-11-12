@@ -58,7 +58,7 @@
           formControlName="estoque"
           id="estoque">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label for="inputAtivo" class="form-label">Condição:</label>
       <select id="inputAtivo" formControlName="ativo" class="form-select">
         <option [value]="null">Escolha...</option>
@@ -66,13 +66,17 @@
         <option [value]="false">Indisponível</option>
       </select>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="colorido" class="form-label">Cor:</label>
         <select id="colorido" formControlName="colorido" class="form-select">
           <option [value]="null">Escolha...</option>
           <option [value]="true">Colorido</option>
           <option [value]="false">Preto e Branco</option>
         </select>
+      </div>
+      <div class="col-md-4">
+        <label for="colorido" class="form-label">Total Vendido:</label>
+        <input type="number" class="form-control" [value]="0" placeholder="0" [disabled]="true">
       </div>
       <div class="col-md-6">
         <label for="editora" class="form-label">*Editora:</label>

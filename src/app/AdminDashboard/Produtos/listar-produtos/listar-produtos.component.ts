@@ -16,6 +16,8 @@ export class ListarProdutosComponent implements OnInit {
 
   productsPage$: Observable<ProductsPage>;
 
+  first: number = 1;
+
   params: FormGroup = this.formBuilder.group({
       order: new FormControl(''),
       page: new FormControl(1),
@@ -41,7 +43,9 @@ export class ListarProdutosComponent implements OnInit {
       this.productsPage$ = this.getProduct();
     }
   
-    onChangePage() {
+    onChangePage(event: any) {
+      this.first = event.first;
+      this.params.controls['page'].setValue(event.page + 1);
       this.productsPage$ = this.getProduct();
     }
 

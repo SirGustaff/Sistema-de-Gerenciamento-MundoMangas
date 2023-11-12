@@ -95,6 +95,7 @@ export class AdicionarProdutoComponent implements OnInit {
             timeOut: 2000,
           });
           this.productForm.reset();
+          this.productForm.controls['totalVendido'].setValue(0);
         },
 
         error: error => {

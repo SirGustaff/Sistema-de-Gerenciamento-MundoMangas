@@ -16,6 +16,8 @@ export class ListarCategoriaComponent implements OnInit {
 
   categoryPage$: Observable<CategoryPage>
 
+  first: number = 1;
+
   params: FormGroup = this.formBuilder.group({
     order: new FormControl(''),
     page: new FormControl(1),
@@ -41,9 +43,12 @@ export class ListarCategoriaComponent implements OnInit {
     this.categoryPage$ = this.getCategory();
   }
 
-  onChangePage() {
+  onChangePage(event: any) {
+    this.first = event.first;
+    this.params.controls['page'].setValue(event.page + 1);
     this.categoryPage$ = this.getCategory();
   }
+
 
   onSearch() {
     this.categoryPage$ = this.getCategory()

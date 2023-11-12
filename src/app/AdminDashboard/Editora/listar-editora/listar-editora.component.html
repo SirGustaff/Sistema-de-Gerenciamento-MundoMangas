@@ -52,12 +52,12 @@
         </tbody>
       </table>
       <div style="display: flex; justify-content: center;" *ngIf="publisherPage.totalItems > 20">
-        <form [formGroup]="params">
-          <select formControlName="page" (change)="onChangePage()">
-            <option *ngFor="let page of [].constructor(publisherPage.totalPages); let i = index"
-              [value]="i+1">Página: {{ i+1 }}</option>
-          </select>
-        </form>
+        <p-paginator 
+          [first]="first"
+          [totalRecords]="publisherPage.totalItems"
+          (onPageChange)="onChangePage($event)" 
+          [rows]="20">
+        </p-paginator>
       </div>
     </div>
   </div>
