@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" *ngIf="publisherPage$ | async as publisherPage">
     <div class="card-header">
       <div class="float-left">
         <h4>Editoras</h4>
       </div>
       <div class="float-start">
-        <span>Itens encontrados: {{ (publisherPage$ | async)?.totalItems }}</span>
+        <span>Itens encontrados: {{ publisherPage.totalItems }}</span>
         <form [formGroup]="params">
           <span>Filtrar por ordem:</span>
           <select formControlName="order" style="margin-left: 10px;" (change)="selectOrder()">
@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let editora of (publisherPage$ | async)?.items">
+          <tr *ngFor="let editora of publisherPage.items">
             <td>{{ editora.id }}</td>
             <td>{{ editora.nome }}</td>
             <td style="font-size: 12px;"><a href="{{ editora.uriFoto }}">{{ editora.uriFoto | slice:0:20}}</a></td>
@@ -51,10 +51,10 @@
           </tr>
         </tbody>
       </table>
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center;" *ngIf="publisherPage.totalItems > 20">
         <form [formGroup]="params">
           <select formControlName="page" (change)="onChangePage()">
-            <option *ngFor="let page of [].constructor((publisherPage$ | async)?.totalPages); let i = index"
+            <option *ngFor="let page of [].constructor(publisherPage.totalPages); let i = index"
               [value]="i+1">Página: {{ i+1 }}</option>
           </select>
         </form>

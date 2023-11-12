@@ -29,8 +29,8 @@
               Produto
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" [routerLink]="['product']">Listar Produtos</a></li>
-              <li><a class="dropdown-item" [routerLink]="['add-product']">Adicionar Produtos</a></li>
+              <li><a class="dropdown-item" [routerLink]="['listar-produtos']">Listar Produtos</a></li>
+              <li><a class="dropdown-item" [routerLink]="['adicionar-produto']">Adicionar Produtos</a></li>
             </ul>
           </li>
         </ul>
@@ -38,9 +38,9 @@
       <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
   </nav>
-  <main>
+  <main *ngIf="userInfo$ | async as userInfo">
     <div class="default" *ngIf="showDefaultContent">
-      <h2>Seja Bem-Vindo {{ (userInfo$ | async)?.nome }}</h2>
+      <h2>Seja Bem-Vindo {{ userInfo.nome }}</h2>
     </div>
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </main>

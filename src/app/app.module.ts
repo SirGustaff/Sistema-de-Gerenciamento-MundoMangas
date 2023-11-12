@@ -16,6 +16,9 @@ import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adiciona
 import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
 import { EditarEditoraComponent } from './AdminDashboard/Editora/editar-editora/editar-editora.component';
 import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-editora/adicionar-editora.component';
+import { ListarProdutosComponent } from './AdminDashboard/Produtos/listar-produtos/listar-produtos.component';
+import { EditarProdutoComponent } from './AdminDashboard/Produtos/editar-produto/editar-produto.component';
+import { AdicionarProdutoComponent } from './AdminDashboard/Produtos/adicionar-produto/adicionar-produto.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-ed
     AdicionarCategoriaComponent,
     ListarEditoraComponent,
     EditarEditoraComponent,
-    AdicionarEditoraComponent
+    AdicionarEditoraComponent,
+    ListarProdutosComponent,
+    EditarProdutoComponent,
+    AdicionarProdutoComponent
   ],
   imports: [
     BrowserModule,

@@ -20,8 +20,8 @@ export class AdicionarEditoraComponent implements OnInit {
   ngOnInit() {
     const reg = /^(?:(http(s)?)?(sftp)?(ftp)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
     this.editoraForm = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(60),]],
-      uriFoto: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)], Validators.pattern(reg)]
+      nome: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(60),]],
+      uriFoto: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)], Validators.pattern(reg)]
     })
   }
 

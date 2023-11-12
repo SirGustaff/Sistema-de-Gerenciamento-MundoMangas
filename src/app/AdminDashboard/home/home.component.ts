@@ -3,6 +3,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
     private authService: UserAuthService,
     private userService: UserService, 
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {
@@ -28,12 +30,19 @@ export class HomeComponent implements OnInit {
   logout() {
     if(this.authService.isLoggedIn()) {
       this.authService.clear();
+      this.toastr.success('O logout foi realizado com sucesso', 'Até a próxima', {
+        progressBar: true,
+        progressAnimation: 'decreasing',
+        timeOut: 2500,
+      });
       this.router.navigate(['']);
     }
   }
 
   onActivate(event: any) {
-    this.showDefaultContent = false;
+    setTimeout(() => {
+      this.showDefaultContent = false;
+    }, 0);
   }
 
 }

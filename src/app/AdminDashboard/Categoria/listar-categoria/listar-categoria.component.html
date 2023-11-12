@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" *ngIf="categoryPage$ | async as categoryPage">
     <div class="card-header">
       <div class="float-left">
         <h4>Categorias</h4>
       </div>
       <div class="float-start">
-        <span>Itens encontrados: {{ (categoryPage$ | async )?.totalItems }}</span>
+        <span>Itens encontrados: {{ categoryPage.totalItems }}</span>
         <form [formGroup]="params">
           <span>Filtrar por ordem:</span>
           <select formControlName="order" style="margin-left: 10px;" (change)="selectOrder()">
@@ -32,7 +32,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let categoria of (categoryPage$ | async)?.items">
+          <tr *ngFor="let categoria of categoryPage.items">
             <td>{{ categoria.id }}</td>
             <td>{{ categoria.nome }}</td>
             <td>
@@ -49,10 +49,10 @@
           </tr>
         </tbody>
       </table>
-      <div style="display: flex; justify-content: center;">
+      <div style="display: flex; justify-content: center;" *ngIf="categoryPage.totalItems > 20">
         <form [formGroup]="params">
           <select formControlName="page" (change)="onChangePage()">
-            <option *ngFor="let page of [].constructor((categoryPage$ | async)?.totalPages); let i = index" [value]="i+1">
+            <option *ngFor="let page of [].constructor(categoryPage.totalPages); let i = index" [value]="i+1">
               Página: {{ i+1 }}</option>
           </select>
         </form>

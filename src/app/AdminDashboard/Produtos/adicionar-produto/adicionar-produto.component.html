@@ -1,0 +1,98 @@
+<h2>Criar novo produto</h2>
+<form class="row g-3" [formGroup]="productForm">
+    <div class="col-md-4">
+      <label for="nome" class="form-label">*Nome:</label>
+      <input 
+        type="text"
+        class="form-control" 
+        placeholder="Nome do produto"
+        formControlName="nome"
+        id="nome">
+    </div>
+    <div class="col-md-4">
+      <label for="paginas" class="form-label">*Paginas:</label>
+      <input 
+        type="number" 
+        min="0"
+        class="form-control" 
+        placeholder="Quantidade de páginas"
+        formControlName="paginas"
+        id="paginas">
+    </div>
+    <div class="col-4">
+      <label for="uriFoto" class="form-label">Uri Foto:</label>
+      <input 
+        type="url" 
+        class="form-control" 
+        placeholder="Link da imagem"
+        formControlName="uriFoto"
+        id="uriFoto" >
+    </div>
+    <div class="col-4">
+      <label for="data" class="form-label">Data de Publicação:</label>
+      <input 
+        type="date" 
+        class="form-control" 
+        placeholder="Data"
+        formControlName="dataPublicacao"
+        id="data">
+    </div>
+    <div class="col-md-4">
+      <label for="preco" class="form-label">*Preço do Produto:</label>
+      <input 
+        type="number" 
+        min="0.00"
+        step="0.01"
+        class="form-control" 
+        placeholder="Preço"
+        formControlName="preco"
+        id="preco">
+    </div>
+    <div class="col-md-4">
+        <label for="estoque" class="form-label">Quantidade em Estoque:</label>
+        <input 
+          type="number" 
+          min="0"
+          class="form-control" 
+          placeholder="Quantidade"
+          formControlName="estoque"
+          id="estoque">
+    </div>
+    <div class="col-md-6">
+      <label for="inputAtivo" class="form-label">Condição:</label>
+      <select id="inputAtivo" formControlName="ativo" class="form-select">
+        <option [value]="null">Escolha...</option>
+        <option [value]="true">Disponível</option>
+        <option [value]="false">Indisponível</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+        <label for="colorido" class="form-label">Cor:</label>
+        <select id="colorido" formControlName="colorido" class="form-select">
+          <option [value]="null">Escolha...</option>
+          <option [value]="true">Colorido</option>
+          <option [value]="false">Preto e Branco</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="editora" class="form-label">*Editora:</label>
+        <select id="editora" formControlName="editora" class="form-select">
+          <option [value]="null">Escolha...</option>
+          <option [ngValue]="editora" *ngFor="let editora of publisherArray">{{ editora.nome }}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="categorias" class="form-label">Categorias:</label>
+        <select id="categorias" formControlName="categorias" class="form-select" multiple="multiple">
+          <option [ngValue]="categoria" *ngFor="let categoria of categoryArray">{{ categoria.nome }}</option>
+        </select>
+      </div>
+    <div class="col-12">
+      <button type="submit"
+      [disabled]="!productForm.valid"
+      (click)="onSubmit()" 
+      class="btn btn-primary">Adicionar Produto</button>
+    </div>
+  </form>
+
+ 

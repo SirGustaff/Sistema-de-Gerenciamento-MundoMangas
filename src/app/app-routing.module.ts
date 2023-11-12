@@ -7,6 +7,8 @@ import { ListarCategoriaComponent } from './AdminDashboard/Categoria/listar-cate
 import { AdicionarCategoriaComponent } from './AdminDashboard/Categoria/adicionar-categoria/adicionar-categoria.component';
 import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/listar-editora.component';
 import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-editora/adicionar-editora.component';
+import { ListarProdutosComponent } from './AdminDashboard/Produtos/listar-produtos/listar-produtos.component';
+import { AdicionarProdutoComponent } from './AdminDashboard/Produtos/adicionar-produto/adicionar-produto.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,14 @@ const routes: Routes = [
         path: 'adicionar-editora',
         component: AdicionarEditoraComponent
       },
+      {
+        path: 'listar-produtos',
+        component: ListarProdutosComponent
+      },
+      {
+        path: 'adicionar-produto',
+        component: AdicionarProdutoComponent
+      }
     ]
   }
 ];
