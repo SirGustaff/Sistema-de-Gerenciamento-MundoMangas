@@ -41,8 +41,12 @@ export class EditarCategoriaComponent {
           });
           this.dialogRef.close('atualizou');
         },
-        error: data => {
-          alert(data.detail);
+        error: error => {
+          this.toastr.error(error.error.detail, '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.dialogRef.close();
         }
       });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EditoraService } from '../../../services/editora.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adicionar-editora',
@@ -14,6 +15,7 @@ export class AdicionarEditoraComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private service: EditoraService,
+    private toastr: ToastrService,
   ) {}
 
 
@@ -29,8 +31,19 @@ export class AdicionarEditoraComponent implements OnInit {
     if(this.editoraForm.valid) {
       this.service.post(this.editoraForm.value).subscribe({
         next: data => {
-          alert("Editora Adicionada Com Sucesso")
+          this.toastr.success('Editora adicionada com sucesso', '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.editoraForm.reset();
+        },
+        error: error => {
+          this.toastr.error(error.error.detail, '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
         }
       });
     }

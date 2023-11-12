@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ProdutoService } from '../../../services/produto.service';
 import { EditarProdutoComponent } from '../editar-produto/editar-produto.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-listar-produtos',
@@ -25,6 +26,7 @@ export class ListarProdutosComponent implements OnInit {
       private dialog: MatDialog,
       private service: ProdutoService,
       private formBuilder: FormBuilder,
+      private toastr: ToastrService,
     ) { }
   
     ngOnInit() {
@@ -63,11 +65,19 @@ export class ListarProdutosComponent implements OnInit {
     onDelete(id: number) {
       this.service.delete(id).subscribe({
         next: data => {
-          alert("Produto deletado com sucesso");
+          this.toastr.success('Produto deletado com sucesso', '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.productsPage$ = this.getProduct();
         },
         error: error => {
-          alert(error.error.detail);
+          this.toastr.error(error.error.detail, '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
         }
       });
     }

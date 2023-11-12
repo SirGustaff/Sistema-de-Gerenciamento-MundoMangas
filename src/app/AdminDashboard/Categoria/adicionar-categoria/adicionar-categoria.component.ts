@@ -35,6 +35,13 @@ export class AdicionarCategoriaComponent {
             timeOut: 2000,
           });
           this.categoryForm.reset();
+        },
+        error: error => {
+          this.toastr.error(error.error.detail, '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
         }
       });
     }

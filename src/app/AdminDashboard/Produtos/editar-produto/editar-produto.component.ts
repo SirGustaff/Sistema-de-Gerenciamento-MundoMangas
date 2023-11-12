@@ -9,6 +9,7 @@ import { Categorias } from '../../../Interfaces/categorias';
 import { CategoriaService } from '../../../services/categoria.service';
 import { Produtos } from '../../../Interfaces/produtos';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editar-produto',
@@ -37,6 +38,7 @@ export class EditarProdutoComponent {
     private produtoService: ProdutoService,
     private editoraService: EditoraService,
     private categoriaService: CategoriaService,
+    private toastr: ToastrService,
   ) {}
 
     ngOnInit() {
@@ -49,9 +51,10 @@ export class EditarProdutoComponent {
       dataPublicacao: [this.produto.dataPublicacao,],
       preco: [this.produto.preco, [Validators.required]],
       estoque: [this.produto.estoque,],
+      totalVendido: [this.produto.totalVendido],
       ativo: [this.produto.ativo,],
       colorido: [this.produto.colorido,],
-      editora: [this.produto.editora],
+      editora: [null],
       categorias: [this.produto.categorias,]
     });
     
@@ -92,11 +95,19 @@ export class EditarProdutoComponent {
     if (this.productForm.valid && this.productForm.valueChanges) {
       this.produtoService.put(this.productForm.value).subscribe({
         next: data => {
-          alert('Produto Atualizado com Sucesso');
+          this.toastr.success('Produto atualizado com sucesso', '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.dialogRef.close('atualizou');
         },
         error: data => {
-          alert(data.detail);
+          this.toastr.error('O produto não foi atualizado', '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.dialogRef.close();
         }
       });

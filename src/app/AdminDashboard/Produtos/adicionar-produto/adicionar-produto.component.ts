@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 import { Categorias } from '../../../Interfaces/categorias';
 import { CategoriaService } from '../../../services/categoria.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adicionar-produto',
@@ -32,6 +33,7 @@ export class AdicionarProdutoComponent implements OnInit {
     private produtoService: ProdutoService,
     private editoraService: EditoraService,
     private categoriaService: CategoriaService,
+    private toastr: ToastrService
   ) {}
 
     ngOnInit() {
@@ -43,6 +45,7 @@ export class AdicionarProdutoComponent implements OnInit {
       dataPublicacao: [],
       preco: [, [Validators.required]],
       estoque: [],
+      totalVendido: [0],
       ativo: [],
       colorido: [],
       editora: [, [Validators.required]],
@@ -86,13 +89,21 @@ export class AdicionarProdutoComponent implements OnInit {
     if(this.productForm.valid) {
       this.produtoService.post(this.productForm.value).subscribe({
         next: data => {
-          alert("Produto Adicionado Com Sucesso")
+          this.toastr.success('Produto adicionado com sucesso', '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
           this.productForm.reset();
         },
 
-        error: data => {
-          alert(data.detail)
-          console.log(this.productForm.value)
+        error: error => {
+          this.toastr.error(error.error.detail, '', {
+            progressBar: true,
+            progressAnimation: 'decreasing',
+            timeOut: 2000,
+          });
+          this.productForm.reset();
         }
       });
     }

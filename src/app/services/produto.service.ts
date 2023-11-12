@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Produtos, ProductsPage } from '../Interfaces/produtos';
 import { take, tap } from 'rxjs/operators';
+import { UserAuthService } from './user-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,11 @@ import { take, tap } from 'rxjs/operators';
 
 export class ProdutoService {
 
+  headers = new HttpHeaders().set('authorization', `Bearer ${this.authService.getToken()}`);
+
   constructor(
     private http: HttpClient,
+    private authService: UserAuthService,
   ) { }
 
   private readonly urlGet = 'http://localhost:8080/produtos/por-nome';
@@ -34,14 +38,14 @@ export class ProdutoService {
   }
 
   post(produto: Produtos) {
-    return this.http.post(this.urlPost, produto).pipe(take(1));
+    return this.http.post(this.urlPost, produto, {'headers': this.headers}).pipe(take(1));
   }
 
   put(produto: Produtos){
-    return this.http.put(`${this.urlPutDelete}${produto.id}`, produto).pipe(take(1));
+    return this.http.put(`${this.urlPutDelete}${produto.id}`, produto, {'headers': this.headers}).pipe(take(1));
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.urlPutDelete}${id}`).pipe(take(1));
+    return this.http.delete(`${this.urlPutDelete}${id}`, {'headers': this.headers}).pipe(take(1));
   }
 }
