@@ -1,48 +1,116 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Admin Dashboard</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Categoria
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" [routerLink]="['listar-categorias']">Listar Categoria</a></li>
-              <li><a class="dropdown-item" [routerLink]="['adicionar-categoria']">Adicionar Categoria</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Editora
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" [routerLink]="['listar-editoras']">Listar Editora</a></li>
-              <li><a class="dropdown-item" [routerLink]="['adicionar-editora']">Adicionar Editora</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Produto
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" [routerLink]="['listar-produtos']">Listar Produtos</a></li>
-              <li><a class="dropdown-item" [routerLink]="['adicionar-produto']">Adicionar Produtos</a></li>
-            </ul>
-          </li>
-        </ul>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Admin Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+      aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Categoria
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" [routerLink]="['listar-categorias']">Listar Categoria</a></li>
+            <li><a class="dropdown-item" [routerLink]="['adicionar-categoria']">Adicionar Categoria</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Editora
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" [routerLink]="['listar-editoras']">Listar Editora</a></li>
+            <li><a class="dropdown-item" [routerLink]="['adicionar-editora']">Adicionar Editora</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Produto
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" [routerLink]="['listar-produtos']">Listar Produtos</a></li>
+            <li><a class="dropdown-item" [routerLink]="['adicionar-produto']">Adicionar Produtos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-dark" aria-expanded="false">
+            Criar novo administrador
+          </button>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+</nav>
+<main *ngIf="userInfo$ | async as userInfo">
+  <div class="default" *ngIf="showDefaultContent">
+    <h2 style="margin-top: 20px;">Seja Bem-Vindo {{ userInfo.nome }}</h2>
+    <h3 style="margin-top: 20px;">Suas informações:</h3>
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <td>
+                <strong>
+                  <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                  Email
+                </strong>
+              </td>
+              <td class="text-primary">
+                {{ userInfo.email }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <span class="glyphicon glyphicon-user  text-primary"></span>
+                  Nome
+                </strong>
+              </td>
+              <td class="text-primary">
+                {{ userInfo.nome }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <span class="glyphicon glyphicon-cloud text-primary"></span>
+                  Sobrenome
+                </strong>
+              </td>
+              <td class="text-primary">
+                {{ userInfo.sobrenome }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                  Data de Nascimento
+                </strong>
+              </td>
+              <td class="text-primary">
+                {{ userInfo.dataNascimento }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <span class="glyphicon glyphicon-eye-open text-primary"></span>
+                  Cpf
+                </strong>
+              </td>
+              <td class="text-primary">
+                {{ userInfo.cpf }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
     </div>
-  </nav>
-  <main *ngIf="userInfo$ | async as userInfo">
-    <div class="default" *ngIf="showDefaultContent">
-      <h2>Seja Bem-Vindo {{ userInfo.nome }}</h2>
-      <h3 style="margin-top: 30px;">Suas informações são:</h3>
-    </div>
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
-  </main>
- 
+  </div>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+</main>

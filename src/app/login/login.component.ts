@@ -41,8 +41,9 @@ export class LoginComponent implements OnInit {
         this.toastr.success('O login foi realizado com sucesso', '', {
           progressBar: true,
           progressAnimation: 'decreasing',
-          timeOut: 2000,
+          timeOut: 1000,
         })
+        setTimeout( () => window.location.reload(), 1000);
       },
       error: (error: any) => {
         this.toastr.error('Suas credenciais podem estar erradas', 'Impossível fazer o login', {

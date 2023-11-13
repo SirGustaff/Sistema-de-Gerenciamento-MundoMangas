@@ -23,6 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { PaginatorModule } from 'primeng/paginator';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
