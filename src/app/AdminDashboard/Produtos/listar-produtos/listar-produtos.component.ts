@@ -54,7 +54,9 @@ export class ListarProdutosComponent implements OnInit {
     }
 
     onEdit(produto: Produtos) {
-      const dialogRef = this.dialog.open(EditarProdutoComponent)
+      const dialogRef = this.dialog.open(EditarProdutoComponent, {
+        height: '680px'
+      })
   
       dialogRef.componentInstance.produto = produto;
   

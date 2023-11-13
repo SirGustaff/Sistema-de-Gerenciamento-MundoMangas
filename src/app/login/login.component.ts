@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
           progressBar: true,
           progressAnimation: 'decreasing',
           timeOut: 2000,
-        });
-        this.router.navigate(['/home'], { replaceUrl: true });
+        })
       },
       error: (error: any) => {
         this.toastr.error('Suas credenciais podem estar erradas', 'Impossível fazer o login', {

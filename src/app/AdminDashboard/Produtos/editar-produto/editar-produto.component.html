@@ -74,10 +74,10 @@
           <option [value]="false">Preto e Branco</option>
         </select>
       </div>
-      <div class="col-md-6" #edit> Editora:
-        <p-dropdown formControlName="editora" [options]="publisherArray" appendTo="body" optionLabel="nome" placeholder="Selecione a nova editora" [style]="{width: '100%'}"></p-dropdown>
+      <div class="col-md-6" id="edit"> *Editora:
+        <p-dropdown formControlName="editora" [options]="publisherArray" optionLabel="nome" placeholder="Selecione a nova editora" [style]="{width: '100%'}"></p-dropdown>
       </div>
-      <div class="col-md-6"> Categoria:
+      <div class="col-md-6"> *Categoria:
         <p-multiSelect [options]="categoryArray"  formControlName="categorias" placeholder="Selecione as novas categorias" optionLabel="nome" [style]="{width: '100%'}"></p-multiSelect>
       </div>
     <div class="col-12">

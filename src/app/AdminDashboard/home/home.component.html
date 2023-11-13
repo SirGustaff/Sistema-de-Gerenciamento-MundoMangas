@@ -41,6 +41,7 @@
   <main *ngIf="userInfo$ | async as userInfo">
     <div class="default" *ngIf="showDefaultContent">
       <h2>Seja Bem-Vindo {{ userInfo.nome }}</h2>
+      <h3 style="margin-top: 30px;">Suas informações são:</h3>
     </div>
     <router-outlet (activate)="onActivate($event)"></router-outlet>
   </main>

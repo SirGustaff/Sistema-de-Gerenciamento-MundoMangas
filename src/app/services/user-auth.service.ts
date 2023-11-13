@@ -9,6 +9,7 @@ export class UserAuthService {
 
   public setToken(jwtToken: string) {
     localStorage.setItem('jwtToken', jwtToken);
+    
   }
 
   public getToken() {

@@ -16,7 +16,7 @@ export class AuthGuardService {
 }
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  const authGuardService = new AuthGuardService(new UserAuthService(), new Router()); 
+  const authGuardService = new AuthGuardService(new UserAuthService(), new Router(),); 
   return authGuardService.canActivate();
 };
 

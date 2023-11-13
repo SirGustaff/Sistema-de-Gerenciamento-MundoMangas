@@ -75,21 +75,14 @@
         </select>
       </div>
       <div class="col-md-4">
-        <label for="colorido" class="form-label">Total Vendido:</label>
+        <label for="colorido" class="form-label">*Total Vendido:</label>
         <input type="number" class="form-control" [value]="0" placeholder="0" [disabled]="true">
       </div>
-      <div class="col-md-6">
-        <label for="editora" class="form-label">*Editora:</label>
-        <select id="editora" formControlName="editora" class="form-select">
-          <option [value]="null">Escolha...</option>
-          <option [ngValue]="editora" *ngFor="let editora of publisherArray">{{ editora.nome }}</option>
-        </select>
+      <div class="col-md-6"> Editora:
+        <p-dropdown formControlName="editora" [options]="publisherArray" optionLabel="nome" placeholder="Selecionar editoras" [style]="{width: '100%'}"></p-dropdown>
       </div>
-      <div class="col-md-6">
-        <label for="categorias" class="form-label">Categorias:</label>
-        <select id="categorias" formControlName="categorias" class="form-select" multiple="multiple">
-          <option [ngValue]="categoria" *ngFor="let categoria of categoryArray">{{ categoria.nome }}</option>
-        </select>
+      <div class="col-md-6"> Categorias:
+        <p-multiSelect [options]="categoryArray"  formControlName="categorias" placeholder="Selecionar categorias" optionLabel="nome" [style]="{width: '100%'}"></p-multiSelect>
       </div>
     <div class="col-12">
       <button type="submit"
@@ -98,5 +91,3 @@
       class="btn btn-primary">Adicionar Produto</button>
     </div>
   </form>
-
- 

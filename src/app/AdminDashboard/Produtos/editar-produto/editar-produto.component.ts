@@ -42,7 +42,6 @@ export class EditarProdutoComponent {
   ) {}
 
     ngOnInit() {
-
     this.productForm = this.formBuilder.group({
       id: [this.produto.id],
       nome: [this.produto.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(120),]],
@@ -53,9 +52,9 @@ export class EditarProdutoComponent {
       estoque: [this.produto.estoque,],
       totalVendido: [this.produto.totalVendido],
       ativo: [this.produto.ativo,],
-      colorido: [this.produto.colorido,],
-      editora: [],
-      categorias: [],
+      colorido: [this.produto.colorido],
+      editora: [, [Validators.required]],
+      categorias: [, [Validators.required]],
     });
     
     this.editoraService.get('', 1, 'OrderByNameASC').pipe(
@@ -89,6 +88,7 @@ export class EditarProdutoComponent {
         }
       }
     });
+    
   }
 
   updateProduct() {
