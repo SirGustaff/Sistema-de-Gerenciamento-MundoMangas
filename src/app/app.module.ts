@@ -24,6 +24,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { PaginatorModule } from 'primeng/paginator';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { RouterModule } from '@angular/router';
+import { RegistrarAdminComponent } from './AdminDashboard/registrar-admin/registrar-admin.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RouterModule } from '@angular/router';
     AdicionarEditoraComponent,
     ListarProdutosComponent,
     EditarProdutoComponent,
-    AdicionarProdutoComponent
+    AdicionarProdutoComponent,
+    RegistrarAdminComponent
   ],
   imports: [
     BrowserModule,

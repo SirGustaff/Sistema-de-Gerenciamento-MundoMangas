@@ -11,7 +11,7 @@ export class RegisterNewAdminService {
 
   constructor(private http: HttpClient, private authService: UserAuthService) {} 
 
-  readonly registerUrl = 'http://localhost:8080/admin-register'
+  readonly registerUrl = 'http://localhost:8080/auth/admin-register'
 
   headers = new HttpHeaders().set('authorization', `Bearer ${this.authService.getToken()}`)
 

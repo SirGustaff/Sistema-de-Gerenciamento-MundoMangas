@@ -35,7 +35,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <button class="btn btn-dark" aria-expanded="false">
+          <button class="btn btn-dark" aria-expanded="false" [routerLink]="['registrar-admin']">
             Criar novo administrador
           </button>
         </li>
@@ -111,6 +111,7 @@
         </table>
       </div>
     </div>
+    <h3 style="margin-top: 20px;">Relatórios gerais:</h3>
   </div>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
 </main>

@@ -9,6 +9,7 @@ import { ListarEditoraComponent } from './AdminDashboard/Editora/listar-editora/
 import { AdicionarEditoraComponent } from './AdminDashboard/Editora/adicionar-editora/adicionar-editora.component';
 import { ListarProdutosComponent } from './AdminDashboard/Produtos/listar-produtos/listar-produtos.component';
 import { AdicionarProdutoComponent } from './AdminDashboard/Produtos/adicionar-produto/adicionar-produto.component';
+import { RegistrarAdminComponent } from './AdminDashboard/registrar-admin/registrar-admin.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'adicionar-produto',
         component: AdicionarProdutoComponent
+      },
+      {
+        path: 'registrar-admin',
+        component: RegistrarAdminComponent
       }
     ]
   }
