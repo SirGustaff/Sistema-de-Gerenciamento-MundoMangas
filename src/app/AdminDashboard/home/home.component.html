@@ -46,72 +46,81 @@
 </nav>
 <main *ngIf="userInfo$ | async as userInfo">
   <div class="default" *ngIf="showDefaultContent">
-    <h2 style="margin-top: 20px;">Seja Bem-Vindo {{ userInfo.nome }}</h2>
-    <h3 style="margin-top: 20px;">Suas informações:</h3>
     <div class="col-md-12">
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <tbody>
-            <tr>
-              <td>
-                <strong>
-                  <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                  Email
-                </strong>
-              </td>
-              <td class="text-primary">
-                {{ userInfo.email }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  <span class="glyphicon glyphicon-user  text-primary"></span>
-                  Nome
-                </strong>
-              </td>
-              <td class="text-primary">
-                {{ userInfo.nome }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  <span class="glyphicon glyphicon-cloud text-primary"></span>
-                  Sobrenome
-                </strong>
-              </td>
-              <td class="text-primary">
-                {{ userInfo.sobrenome }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  <span class="glyphicon glyphicon-bookmark text-primary"></span>
-                  Data de Nascimento
-                </strong>
-              </td>
-              <td class="text-primary">
-                {{ userInfo.dataNascimento }}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  <span class="glyphicon glyphicon-eye-open text-primary"></span>
-                  Cpf
-                </strong>
-              </td>
-              <td class="text-primary">
-                {{ userInfo.cpf }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card">
+        <div class="card-header">
+          <div class="float-left">
+            <h3 style="margin: 0px 0px 20px 0px;">Seja bem-vindo {{ userInfo.nome }}</h3>
+          </div>
+          <div class="float-left">
+            <h4>Suas informações:</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td>
+                    <strong>
+                      <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                      Email
+                    </strong>
+                  </td>
+                  <td class="text-primary">
+                    {{ userInfo.email }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>
+                      <span class="glyphicon glyphicon-user  text-primary"></span>
+                      Nome
+                    </strong>
+                  </td>
+                  <td class="text-primary">
+                    {{ userInfo.nome }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>
+                      <span class="glyphicon glyphicon-cloud text-primary"></span>
+                      Sobrenome
+                    </strong>
+                  </td>
+                  <td class="text-primary">
+                    {{ userInfo.sobrenome }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>
+                      <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                      Data de Nascimento
+                    </strong>
+                  </td>
+                  <td class="text-primary">
+                    {{ userInfo.dataNascimento }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>
+                      <span class="glyphicon glyphicon-eye-open text-primary"></span>
+                      CPF
+                    </strong>
+                  </td>
+                  <td class="text-primary">
+                    {{ userInfo.cpf }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-    <h3 style="margin-top: 20px;">Relatórios gerais:</h3>
   </div>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
 </main>

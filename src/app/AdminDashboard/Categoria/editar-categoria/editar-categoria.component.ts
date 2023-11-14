@@ -26,7 +26,7 @@ export class EditarCategoriaComponent {
   ngOnInit() {
     this.editForm = this.formBuilder.group({
       id: [this.categoria.id],
-      nome: [this.categoria.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(60),]]
+      nome: [this.categoria.nome,[Validators.required, Validators.minLength(1), Validators.maxLength(60),]]
     })
   }
 

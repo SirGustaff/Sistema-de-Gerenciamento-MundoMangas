@@ -8,6 +8,9 @@
         placeholder="Nome do produto"
         formControlName="nome"
         id="nome">
+        <div class="alert alert-danger" role="alert" *ngIf="!productForm.get('nome')?.valid && productForm.get('nome')?.touched">
+          <span>O nome deve ter no máximo 120 caracteres</span>
+        </div>
     </div>
     <div class="col-md-4">
       <label for="paginas" class="form-label">*Paginas:</label>
@@ -27,6 +30,9 @@
         placeholder="Link da imagem"
         formControlName="uriFoto"
         id="uriFoto" >
+        <div class="alert alert-danger" role="alert" *ngIf="!productForm.get('uriFoto')?.valid && productForm.get('uriFoto')?.touched">
+          <span>O link deve deve ter no máximo 255 caracteres</span>
+        </div>
     </div>
     <div class="col-4">
       <label for="data" class="form-label">Data de Publicação:</label>

@@ -14,3 +14,7 @@ label {
 input {
     width: 323.5px;
 }
+
+#warning {
+    padding: 6px 12px;
+}

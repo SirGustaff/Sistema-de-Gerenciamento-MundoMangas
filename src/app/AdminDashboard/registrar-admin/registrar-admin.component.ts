@@ -24,7 +24,7 @@ export class RegistrarAdminComponent implements OnInit {
       senha: [, [Validators.required]],
       nome: [, [Validators.required]],
       sobrenome: [, [Validators.required]],
-      cpf: [, [Validators.required]],
+      cpf: [, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
       dataNascimento: [, [Validators.required]]
     })
   }
@@ -37,6 +37,7 @@ export class RegistrarAdminComponent implements OnInit {
           progressAnimation: 'decreasing',
           timeOut: 2000,
         });
+        this.userForm.reset();
       },
       error: error => {
         this.toastr.error(error.error.detail, '', {

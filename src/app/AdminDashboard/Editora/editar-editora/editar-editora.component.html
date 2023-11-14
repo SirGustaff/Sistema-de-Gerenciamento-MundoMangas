@@ -7,8 +7,8 @@
     formControlName="nome"
     id="nome" 
     placeholder="Digite o novo nome">
-    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('nome')?.valid && editForm.get('nome')?.touched">
-      <span>O nome deve ter entre 3 e 60 caracteres</span>
+    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('nome')?.valid && editForm.get('nome')?.touched" id="warning">
+      <span>O nome deve ter entre 1 e 60 caracteres</span>
     </div>
     <label class="control-label" for="uriFoto">Alterar Imagem:</label>
     <input 
@@ -18,11 +18,8 @@
     id="uriFoto" 
     placeholder="Digite o link da nova imagem">
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="editForm.get('uriFoto')?.value.length < 3 && !editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched">
-      <span>O link deve ter entre 3 e 255 caracteres</span>
-    </div>
-    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched">
-        <span>O link da imagem deve ser uma url</span>
+    <div class="alert alert-danger" role="alert" *ngIf="!editForm.get('uriFoto')?.valid && editForm.get('uriFoto')?.touched" id="warning">
+      <span>O link deve ter no máximo 255 caracteres</span>
     </div>
     <div>
       <button

@@ -18,6 +18,8 @@ export class ListarEditoraComponent {
 
   first: number = 1;
 
+  uriFotoIsNull = null;
+
   params: FormGroup = this.formBuilder.group({
     order: new FormControl(''),
     page: new FormControl(1),

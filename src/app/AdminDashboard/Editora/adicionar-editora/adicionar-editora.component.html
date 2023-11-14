@@ -10,7 +10,7 @@
       placeholder="Nome da Categoria">
     </div>
     <div class="alert alert-danger" role="alert" *ngIf="!editoraForm.get('nome')?.valid && editoraForm.get('nome')?.touched">
-      <span>O nome deve ter entre 3 e 60 caracteres</span>
+      <span>O nome deve ter entre 1 e 60 caracteres</span>
     </div>
     <div class="form-group">
         <label class="control-label" for="categoria-form">Uri Foto:</label>
@@ -21,11 +21,8 @@
         id="categoria-form" 
         placeholder="Link da imagem">
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="editoraForm.get('uriFoto')?.value.length < 3 && !editoraForm.get('uriFoto')?.valid && editoraForm.get('uriFoto')?.touched">
-        <span>O link deve ter entre 3 e 255 caracteres</span>
-    </div>
-    <div class="alert alert-danger" role="alert" *ngIf=" !editoraForm.get('uriFoto')?.valid && editoraForm.get('uriFoto')?.touched">
-        <span>O link da imagem deve ser uma url</span>
+    <div class="alert alert-danger" role="alert" *ngIf="!editoraForm.get('uriFoto')?.valid && editoraForm.get('uriFoto')?.touched">
+        <span>O link deve ter entre no máximo 255 caracteres</span>
     </div>
     <div>
         <button

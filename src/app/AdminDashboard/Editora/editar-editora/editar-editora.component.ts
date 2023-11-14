@@ -24,17 +24,17 @@ export class EditarEditoraComponent {
   ) {}
 
   ngOnInit() {
-    const reg = /^(?:(http(s)?)?(sftp)?(ftp)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
     this.editForm = this.formBuilder.group({
       id: [this.editora.id],
-      nome: [this.editora.nome,[Validators.required, Validators.minLength(3), Validators.maxLength(60),]],
-      uriFoto: [this.editora.uriFoto, [Validators.required, Validators.minLength(3), Validators.maxLength(255), Validators.pattern(reg)]]
+      nome: [this.editora.nome,[Validators.required, Validators.minLength(1), Validators.maxLength(60),]],
+      uriFoto: [this.editora.uriFoto, [ Validators.maxLength(255)]]
     })
   }
 
   updatePublisher() {
+    if (this.editForm.get('uriFoto')?.value  == '')
+      this.editForm.get('uriFoto')?.setValue(null);
     if (this.editForm.valid && this.editForm.valueChanges) {
-
       this.service.put(this.editForm.value).subscribe({
         next: data => {
           this.toastr.success('Editora atualizada com sucesso', '', {

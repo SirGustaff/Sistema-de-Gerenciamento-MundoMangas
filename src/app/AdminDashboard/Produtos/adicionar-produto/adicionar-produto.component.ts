@@ -39,9 +39,9 @@ export class AdicionarProdutoComponent implements OnInit {
     ngOnInit() {
 
     this.productForm = this.formBuilder.group({
-      nome: [, [Validators.required, Validators.minLength(3), Validators.maxLength(120),]],
+      nome: [, [Validators.required, Validators.minLength(1), Validators.maxLength(120),]],
       paginas: [, Validators.required],
-      uriFoto: [, [Validators.minLength(3), Validators.maxLength(255)]],
+      uriFoto: [, [ Validators.maxLength(255)]],
       dataPublicacao: [],
       preco: [, [Validators.required]],
       estoque: [],
