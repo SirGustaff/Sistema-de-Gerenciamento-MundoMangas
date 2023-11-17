@@ -44,9 +44,9 @@ export class EditarProdutoComponent {
     ngOnInit() {
     this.productForm = this.formBuilder.group({
       id: [this.produto.id],
-      nome: [this.produto.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(120),]],
+      nome: [this.produto.nome, [Validators.required, Validators.minLength(1), Validators.maxLength(120),]],
       paginas: [this.produto.paginas, Validators.required],
-      uriFoto: [this.produto.uriFoto, [Validators.minLength(3), Validators.maxLength(255)]],
+      uriFoto: [this.produto.uriFoto, [Validators.minLength(1), Validators.maxLength(255)]],
       dataPublicacao: [this.produto.dataPublicacao,],
       preco: [this.produto.preco, [Validators.required]],
       estoque: [this.produto.estoque,],
